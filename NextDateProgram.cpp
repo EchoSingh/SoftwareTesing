@@ -1,22 +1,19 @@
 #include <iostream>
 
-//Jai Shree Ram
-//Author : Aditya Singh
-//Software Testing Next Date cpp code
+// Jai Shree Ram
+// Author : Aditya Singh
+// Software Testing Next Date cpp code
 
-int main() {
-    int nextday{}, nextmonth{}, nextyear{}, day{}, month{}, year{};
+void nextdate(int day, int month, int year) {
+    int nextday{}, nextmonth{}, nextyear{};
     bool c1{}, c2{}, c3{};
-
-    // Input
-    std::cin >> day >> month >> year;
 
     // Validity checks
     if (day >= 1 && day <= 31) { c1 = true; } else { std::cout << "day out of the range\n"; }
     if (month >= 1 && month <= 12) { c2 = true; } else { std::cout << "month out of the range\n"; }
     if (year >= 1812 && year <= 2012) { c3 = true; } else { std::cout << "year out of the range\n"; }
 
-    if (!(c1 && c2 && c3)) return 1;
+    if (!(c1 && c2 && c3)) return;
 
     nextmonth = month;
     nextyear = year;
@@ -31,7 +28,7 @@ int main() {
                 nextmonth = month + 1;
             } else {
                 std::cout << "invalid input date" << std::endl;
-                return 1;
+                return;
             }
             break;
 
@@ -42,7 +39,7 @@ int main() {
                 nextmonth = month + 1;
             } else {
                 std::cout << "invalid input date" << std::endl;
-                return 1;
+                return;
             }
             break;
 
@@ -59,7 +56,7 @@ int main() {
                 nextmonth = 3;
             } else {
                 std::cout << "invalid input date" << std::endl;
-                return 1;
+                return;
             }
             break;
 
@@ -68,22 +65,28 @@ int main() {
             else if (day == 31) {
                 if (year == 2012) {
                     std::cout << "invalid year" << std::endl;
-                    return 1;
+                    return;
                 }
                 nextday = 1;
                 nextmonth = 1;
                 nextyear = year + 1;
             } else {
                 std::cout << "invalid input date" << std::endl;
-                return 1;
+                return;
             }
             break;
 
         default:
             std::cout << "invalid month" << std::endl;
-            return 1;
+            return;
     }
 
     std::cout << "Next date: " << nextday << "/" << nextmonth << "/" << nextyear << std::endl;
+}
+
+int main() {
+    int day{}, month{}, year{};
+    std::cin >> day >> month >> year;
+    nextdate(day, month, year);
     return 0;
 }
